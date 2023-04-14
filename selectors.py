@@ -1,50 +1,17 @@
+class Selectors:
+    PAGE_LINK='https://impresso-expresso.netlify.app/'
+    HOME_PAGE_LINK='//*[@id="gatsby-focus-wrapper"]/nav/div/ul/li[1]/a'
+    HOME_PAGE_TITLE='//*[@id="gatsby-focus-wrapper"]/div[1]/h1'
+    OURMENU_PAGE_LINK='[href="/menu"]'
+    OURMENU_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+    PRODUCTS_PAGE_LINK='[href="/products"]'
+    PRODUCTS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+    ABOUT_PAGE_LINK='[href="/about"]'
+    ABOUT_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+    CONTACTUS_PAGE_LINK='[href="/contact"]'
+    CONTACTUS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+    CART_PAGE_LINK='//*[@id="gatsby-focus-wrapper"]/nav/div/ul/li[6]'
+    CART_PAGE_TITLE = '//*[@id="snipcart-title"]'
+    ITEMS_SELECTOR='//section/div/div/div/div/div/div/button'
+    CART_CLOSE_BUTTON='//*[@id="snipcart-close"]/i'
 
-
-class BasePage:
-    def __init__(self, page):
-        self.page=page
-
-    def go(self, link):
-        self.page.goto(link)
-
-    def follow_link(self, selector):
-        link=self.page.query_selector(selector)
-        link.click()
-        self.page.wait_for_timeout(2000)
-
-    def go_cart(self):
-        self.follow_link('//*[@id="gatsby-focus-wrapper"]/nav/div/ul/li[6]')
-
-    def wait(self, timeout):
-        self.page.wait_for_timeout(timeout)
-
-class Home_Page(BasePage):
-    def go_products(self):
-        self.follow_link('[href="/products"]')
-
-class Products_Page(BasePage):
-    def add_to_cart(self, selector, number):
-        products = self.page.query_selector_all(selector)
-        close_button = self.page.query_selector('//*[@id="snipcart-close"]/i')
-        for i in range(0, number):
-            products[i].click()
-            self.wait(2000)
-            close_button.click()
-            self.wait(1000)
-
-    def check_prices(self, selector, number):
-        prices=self.page.query_selector_all(selector)
-        sum=0.0
-        for i in range(0, number):
-            s=prices[0].inner_text()
-            sn=s[1:]
-            a=float(sn)
-            sum+=a
-        sumofproducts=self.page.query_selector('//*[@id="snipcart-amount"]')
-        s1=sumofproducts.inner_text()
-        s1n=s1[1:]
-        a1=float(s1n)
-        if (sum==a1):
-            print("Test1 is Correct!")
-        else:
-            print("Test1 is Incorrect :(")

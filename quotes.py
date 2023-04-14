@@ -1,21 +1,16 @@
 from playwright.sync_api import sync_playwright
+
 import selectors
-
-def Test1(page, number):
-    page.go('https://impresso-expresso.netlify.app/')
-    page.go_products()
-    page1 = selectors.Products_Page(page.page)
-    page1.add_to_cart('//section/div/div/div/div/div/div/button', number)
-    page1.go_cart()
-    page1.check_prices('//*[@id="snipcart-items-list"]/tr/td[5]/span', number)
-
-
+from tests import test_navigation_menu
 def main():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(headless=False)
 
-        page = selectors.Home_Page(browser.new_page())
-        Test1(page, 3)
+        page=browser.new_page()
+        page.goto(selectors.Selectors.PAGE_LINK)
+
+        test_navigation_menu.test_go_to_home_page(page)
+        test_navigation_menu.test_go_to_products_page(page)
 
         browser.close()
 
