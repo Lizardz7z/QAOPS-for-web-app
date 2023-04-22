@@ -1,16 +1,16 @@
 from playwright.sync_api import sync_playwright
 
-import locators
+from selectrs.locators import *
 from tests import test_navigation_menu
 from tests import test_cart_functionality
 
 
-def main():
+def setup():
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)
+        browser = p.chromium.launch(headless=True)
 
         page = browser.new_page()
-        page.goto(locators.Selectors.PAGE_LINK)
+        page.goto(selectors_base_page.PAGE_LINK)
 
         test_navigation_menu.test_go_to_home_page(page)
         test_navigation_menu.test_go_to_products_page(page)
@@ -20,5 +20,4 @@ def main():
         browser.close()
 
 
-if __name__ == '__main__':
-    main()
+setup()
