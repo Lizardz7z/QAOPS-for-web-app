@@ -3,22 +3,28 @@ class selectors_base_page:
     HOME_PAGE_LINK = '//*[@id="gatsby-focus-wrapper"]/nav/div/ul/li[1]/a'
     HOME_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div[1]/h1'
 
+
 class selectors_menu_page:
     OUR_MENU_PAGE_LINK = '[href="/menu"]'
     OUR_MENU_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
 
+
 class selectors_products_page:
+    ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'
     PRODUCTS_PAGE_LINK = '[href="/products"]'
     PRODUCTS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+
 
 class selectors_about_page:
     ABOUT_PAGE_LINK = '[href="/about"]'
     ABOUT_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
 
+
 class selectors_contact_page:
     CONTACTUS_PAGE_LINK = '[href="/contact"]'
     CONTACTUS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
     ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'
+
 
 class selectors_cart_page:
     CART_PAGE_LINK = '//*[@id="gatsby-focus-wrapper"]/nav/div/ul/li[6]'
@@ -33,4 +39,18 @@ class selectors_cart_page:
     PRODUCT_NAME = ".snip-product__name"
     UNIT_PRICE = '[data-bind="unitPrice"]'
     TOTAL_PRICE = '[data-bind="totalPrice"]'
+    NEXT_STEP_1 = '//*[@id="snipcart-actions"]/a'
+    NEXT_STEP_2 = '//*[@id="snipcart-next"]'
 
+
+class selectors_billing_address:
+    NAME = '//*[@id="snip-name"]'
+    COMPANY = '//*[@id="snip-company"]'
+    ADDRESS1 = '//*[@id="snip-address1"]'
+    ADDRESS2 = '//*[@id="snip-address2"]'
+    CITY = '//*[@id="snip-city"]'
+    ZIP = '//*[@id="snip-postalCode"]'
+    PHONE = '//*[@id="snip-phone"]'
+    EMAIL = '//*[@id="snip-email"]'
+    COUNTRY = '//*[@id="snip-country"]'
+    PROVINCE = '//*[@id="snipprovince"]'

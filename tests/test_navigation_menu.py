@@ -1,5 +1,4 @@
 from selectrs.locators import *
-from POM import BasePage
 
 
 def test_go_to_home_page(setup_browser, close_browser):
