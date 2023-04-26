@@ -8,12 +8,8 @@ PAGE_LINK = 'https://impresso-expresso.netlify.app/'
 def setup_browser():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
-
         page = browser.new_page()
         page.goto(PAGE_LINK)
-        return page, browser
+        yield page
+        browser.close()
 
-
-@pytest.fixture
-def close_browser(browser):
-    browser.close()
