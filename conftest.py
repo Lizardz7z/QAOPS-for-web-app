@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import sync_playwright
 
-PAGE_LINK = 'https://impresso-expresso.netlify.app/'
+from selectrs.locators import *
 
 
 @pytest.fixture
@@ -9,7 +9,8 @@ def setup_browser():
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=True)
         page = browser.new_page()
-        page.goto(PAGE_LINK)
+        page.goto(selectors_base_page.PAGE_LINK)
         yield page
         browser.close()
+
 

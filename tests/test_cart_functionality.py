@@ -4,15 +4,17 @@ import re
 
 def test_add_to_cart(setup_browser):
     page = setup_browser
-    #вставить переход на страницу "продукты" (этот тест должен выполняться при условии прохождение тестов на открытие корзины и страницы "продукты"
+    link = page.query_selector(selectors_products_page.PRODUCTS_PAGE_LINK)
+    link.click()
+    page.wait_for_timeout(2000)
     products = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
-    close_button = page.query_selector(selectors_cart_page.CART_CLOSE_BUTTON)
     our_products = {products[i].get_attribute(selectors_cart_page.DATA_ITEM_NAME_ATTRIBUTE).upper(): 0
                     for i in range(len(products))}
     for i in range(len(products)):
         products[i].click()
         our_products[products[i].get_attribute(selectors_cart_page.DATA_ITEM_NAME_ATTRIBUTE).upper()] += 1
         page.wait_for_timeout(2000)
+        close_button = page.query_selector(selectors_cart_page.CART_CLOSE_BUTTON)
         close_button.click()
         page.wait_for_timeout(1000)
     products[3].click()
@@ -28,10 +30,9 @@ def test_add_to_cart(setup_browser):
     for i in our_products.items():
         assert products_names_in_cart[i[0]] == i[1], "Products added to cart incorrectly"
 
-#
-#
-# def test_check_prices(setup_browser, close_browser):
-#     page, browser = setup_browser()
+
+# def test_check_prices(setup_browser):
+#     page = setup_browser
 #     # заставить этот тест выполняться только при условии, что выполнен предыдущий (добавление в корзину)
 #     prices = page.query_selector_all(selectors_cart_page.ITEMS_IN_CART)
 #     prices_home = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
@@ -53,9 +54,8 @@ def test_add_to_cart(setup_browser):
 #     s1 = sum_of_products.inner_text()
 #     s1 = float(s1[1:])
 #     assert s1 == subtotal, "The subtotal price calculated incorrectly"
-#     close_browser(browser)
 #
-#
+
 # def test_next_step(page, selector):
 #     next_step_button = page.query_selector(selector)
 #     next_step_button.click()
