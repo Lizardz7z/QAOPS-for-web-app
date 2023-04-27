@@ -4,6 +4,7 @@ import pytest
 import allure
 
 @allure.feature("Cart functionality checking")
+@pytest.mark.slow
 @allure.feature("Check goods adding to the cart")
 @allure.story("Проверка функции добавления товаров в корзину")
 def test_add_to_cart(setup_browser):
