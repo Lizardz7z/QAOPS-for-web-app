@@ -1,5 +1,6 @@
-from selectrs.locators import selectors_base_page, selectors_cart_page, selectors_menu_page
-from selectrs.locators import selectors_products_page, selectors_contact_page, selectors_about_page
+from selectrs.locators import selectors_base_page, selectors_cart_page
+from selectrs.locators import selectors_products_page, selectors_contact_page
+from selectrs.locators import selectors_about_page, selectors_menu_page
 import pytest
 import allure
 
@@ -18,7 +19,8 @@ class Tests:
         with allure.step("Проверка правильности перехода"):
             title = page.query_selector(
                 selectors_base_page.HOME_PAGE_TITLE)
-            assert title.inner_text().upper() == "IMPRESSO ESPRESSO", "Link to home page is not working"
+            assert title.inner_text().upper() == "IMPRESSO ESPRESSO", \
+                "Link to home page is not working"
 
     @pytest.mark.fast
     @allure.feature("Move to menu page throw navigation menu")
@@ -33,7 +35,8 @@ class Tests:
         with allure.step("Проверка правильности перехода"):
             title = page.query_selector(
                 selectors_menu_page.OUR_MENU_PAGE_TITLE)
-            assert title.inner_text().upper() == "OUR MENU", "Link to our menu page is not working"
+            assert title.inner_text().upper() == "OUR MENU", \
+                "Link to our menu page is not working"
 
     @pytest.mark.fast
     @allure.feature("Move to products page throw navigation menu")
@@ -48,7 +51,8 @@ class Tests:
         with allure.step("Проверка правильности перехода"):
             title = page.query_selector(
                 selectors_products_page.PRODUCTS_PAGE_TITLE)
-            assert title.inner_text().upper() == "PRODUCTS", "Link to products page is not working"
+            assert title.inner_text().upper() == "PRODUCTS", \
+                "Link to products page is not working"
 
     @pytest.mark.fast
     @allure.feature("Move to about page throw navigation menu")
@@ -63,7 +67,8 @@ class Tests:
         with allure.step("Проверка правильности перехода"):
             title = page.query_selector(
                 selectors_about_page.ABOUT_PAGE_TITLE)
-            assert title.inner_text().upper() == "ABOUT US", "Link to about page is not working"
+            assert title.inner_text().upper() == "ABOUT US", \
+                "Link to about page is not working"
 
     @pytest.mark.fast
     @allure.feature("Move to contact us page throw navigation menu")
@@ -78,7 +83,8 @@ class Tests:
         with allure.step("Проверка правильности перехода"):
             title = page.query_selector(
                 selectors_contact_page.CONTACTUS_PAGE_TITLE)
-            assert title.inner_text().upper() == "CONTACT US", "Link to contact us page is not working"
+            assert title.inner_text().upper() == "CONTACT US", \
+                "Link to contact us page is not working"
 
     @pytest.mark.fast
     @allure.feature("Move to cart page throw navigation menu")
@@ -93,5 +99,6 @@ class Tests:
         with allure.step("Проверка правильности перехода"):
             title = page.query_selector(
                 selectors_cart_page.CART_PAGE_TITLE)
-            assert title.inner_text().upper() == "MY CART", "Link to cart page is not working"
+            assert title.inner_text().upper() == "MY CART", \
+                "Link to cart page is not working"
 
