@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import sync_playwright
 
-from selectrs.locators import *
+from selectrs.locators import selectors_base_page
 
 
 @pytest.fixture
