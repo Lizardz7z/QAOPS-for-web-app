@@ -1,0 +1,16 @@
+allure-pytest==2.13.1
+allure-python-commons==2.13.1
+attrs==23.1.0        
+colorama==0.4.6      
+exceptiongroup==1.1.1
+greenlet==2.0.1
+iniconfig==2.0.0
+npm==0.1.1
+optional-django==0.1.0
+packaging==23.1
+playwright==1.32.1
+pluggy==1.0.0
+pyee==9.0.4
+pytest==7.3.0
+tomli==2.0.1
+typing_extensions==4.5.0
