@@ -1,4 +1,4 @@
-from selectrs.locators import selectors_base_page, selectors_cart_page, selectors_products_page
+from selectrs.locators import selectors_cart_page, selectors_products_page
 import re
 import pytest
 import allure
