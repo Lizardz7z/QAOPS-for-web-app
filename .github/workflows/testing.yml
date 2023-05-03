@@ -41,12 +41,7 @@ jobs:
         continue-on-error: true
         run: |
           pytest --alluredir allure-results -m ${{ matrix.test-mark }}
-
-  reporting:
-    runs-on: ubuntu-latest
-    needs: build-and-test-linux
-    
-    steps:
+          
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
