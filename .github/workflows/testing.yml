@@ -10,15 +10,13 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test-linux:
+  build:
 
     runs-on: ubuntu-latest
-    continue-on-error: true
     timeout-minutes: 30
     strategy:
       matrix:
         python-version: ["3.11"]
-        test-mark: ["fast", "slow"]
 
     steps:
       - uses: actions/checkout@v3
@@ -30,7 +28,7 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install ruff pytest
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
       - name: Lint with ruff
         run: |
           # default set of ruff rules with GitHub Annotations
@@ -38,10 +36,8 @@ jobs:
           playwright install
  
       - name: Test with pytest
-        continue-on-error: true
         run: |
-          pytest --alluredir allure-results -m ${{ matrix.test-mark }}
-          
+          pytest --alluredir allure-results
       - name: Get Allure history
         uses: actions/checkout@v2
         if: always()
