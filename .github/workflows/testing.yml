@@ -73,6 +73,9 @@ jobs:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
           message: |
+              Tests were run.
+              Commit: ${{ github.run_id }}
+              
               Test Report:
-              simple-elf.github.io/github-allure-history/${{ github.run_number }}
+              https://lizardz7z.github.io/QAOPS-for-web-app/
     
