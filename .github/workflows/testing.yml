@@ -67,4 +67,11 @@ jobs:
          PERSONAL_TOKEN: ${{ secrets.SECRET_TOKEN }}
          PUBLISH_BRANCH: gh-pages
          PUBLISH_DIR: allure-history
+      - name: Telegram Notification
+        uses: appleboy/telegram-action@master
+        with:
+          to: ${{ secrets.CHAT_ID }}
+          token: ${{ secrets.BOT_TOKEN }}
+          message: |
+              Hello World!
     
