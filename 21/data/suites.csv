@@ -1,8 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"passed","Wed May 03 14:23:54 GMT 2023","Wed May 03 14:23:56 GMT 2023","2123","tests","test_navigation_menu","Tests","","","test_go_to_our_menu_page",""
-"passed","Wed May 03 14:24:01 GMT 2023","Wed May 03 14:24:03 GMT 2023","2135","tests","test_navigation_menu","Tests","","","test_go_to_about_page",""
-"passed","Wed May 03 14:24:04 GMT 2023","Wed May 03 14:24:06 GMT 2023","2151","tests","test_navigation_menu","Tests","","","test_go_to_contactus_page",""
-"passed","Wed May 03 14:22:59 GMT 2023","Wed May 03 14:23:50 GMT 2023","50955","tests","test_cart_functionality","","","","test_add_to_cart",""
-"passed","Wed May 03 14:23:58 GMT 2023","Wed May 03 14:24:00 GMT 2023","2134","tests","test_navigation_menu","Tests","","","test_go_to_products_page",""
-"passed","Wed May 03 14:23:51 GMT 2023","Wed May 03 14:23:53 GMT 2023","2107","tests","test_navigation_menu","Tests","","","test_go_to_home_page",""
-"passed","Wed May 03 14:24:07 GMT 2023","Wed May 03 14:24:10 GMT 2023","2118","tests","test_navigation_menu","Tests","","","test_go_to_cart_page",""
