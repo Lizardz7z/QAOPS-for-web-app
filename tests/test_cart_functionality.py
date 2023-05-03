@@ -1,7 +1,7 @@
 from selectrs.locators import selectors_cart_page, selectors_products_page
-#import re
 import pytest
 import allure
+
 
 @allure.feature("Cart functionality checking")
 @pytest.mark.slow

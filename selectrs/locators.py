@@ -5,26 +5,26 @@ class selectors_base_page:
 
 
 class selectors_menu_page:
-    PAGE_LINK='https://impresso-expresso.netlify.app/menu'
+    PAGE_LINK = 'https://impresso-expresso.netlify.app/menu'
     OUR_MENU_PAGE_LINK = '[href="/menu"]'
     OUR_MENU_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
 
 
 class selectors_products_page:
-    PAGE_LINK ='https://impresso-expresso.netlify.app/products'
+    PAGE_LINK = 'https://impresso-expresso.netlify.app/products'
     ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'
     PRODUCTS_PAGE_LINK = '[href="/products"]'
     PRODUCTS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
 
 
 class selectors_about_page:
-    PAGE_LINK ='https://impresso-expresso.netlify.app/about'
+    PAGE_LINK = 'https://impresso-expresso.netlify.app/about'
     ABOUT_PAGE_LINK = '[href="/about"]'
     ABOUT_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
 
 
 class selectors_contact_page:
-    PAGE_LINK ='https://impresso-expresso.netlify.app/contact'
+    PAGE_LINK = 'https://impresso-expresso.netlify.app/contact'
     CONTACTUS_PAGE_LINK = '[href="/contact"]'
     CONTACTUS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
     ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'

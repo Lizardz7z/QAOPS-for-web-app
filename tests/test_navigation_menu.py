@@ -4,6 +4,7 @@ from selectrs.locators import selectors_about_page, selectors_menu_page
 import pytest
 import allure
 
+
 @allure.feature("Navigation menu functionality checking")
 class Tests:
     @pytest.mark.fast
