@@ -73,5 +73,6 @@ jobs:
           to: ${{ secrets.CHAT_ID }}
           token: ${{ secrets.BOT_TOKEN }}
           message: |
-              Hello World!
+              Test Report:
+              simple-elf.github.io/github-allure-history/${{ github.run_number }}
     
