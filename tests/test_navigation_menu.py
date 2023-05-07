@@ -8,6 +8,32 @@ import allure
 @allure.feature("Navigation menu functionality checking")
 class Tests:
     @pytest.mark.fast
+    @allure.feature("Check the visibility of navigation menu")
+    @allure.story("Проверка видимости каждой кнопки навигационного меню")
+    def test_menu_is_visible(self, setup_browser):
+        with allure.step("Запуск браузера и открытие страницы"):
+            page = setup_browser
+        with allure.step("Проверка видимости кнопки 'home'"):
+            link=page.query_selector(selectors_base_page.HOME_PAGE_LINK)
+            assert link.inner_text().upper() == "HOME", \
+                                                "Home button is invisible"
+        with allure.step("Проверка видимости кнопки 'menu'"):
+            link = page.query_selector(selectors_menu_page.OUR_MENU_PAGE_LINK)
+            assert link.inner_text().upper() == "OUR MENU", \
+                                                "Menu button is invisible"
+        with allure.step("Проверка видимости кнопки 'products'"):
+            link = page.query_selector(selectors_products_page.PRODUCTS_PAGE_LINK)
+            assert link.inner_text().upper() == "PRODUCTS", \
+                                                "Products button is invisible"
+        with allure.step("Проверка видимости кнопки 'about'"):
+            link = page.query_selector(selectors_about_page.ABOUT_PAGE_LINK)
+            assert link.inner_text().upper() == "ABOUT", \
+                                                "About button is invisible"
+        with allure.step("Проверка видимости кнопки 'contact us'"):
+            link = page.query_selector(selectors_contact_page.CONTACTUS_PAGE_LINK)
+            assert link.inner_text().upper() == "CONTACT US", \
+                                                "Contact button is invisible"
+    @pytest.mark.fast
     @allure.feature("Move to home page throw navigation menu")
     @allure.story("Переход на домашнюю страницу с помощью навигационного меню")
     def test_go_to_home_page(self, setup_browser):

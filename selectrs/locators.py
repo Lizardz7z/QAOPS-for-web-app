@@ -2,6 +2,10 @@ class selectors_base_page:
     PAGE_LINK = 'https://impresso-expresso.netlify.app/'
     HOME_PAGE_LINK = '//*[@id="gatsby-focus-wrapper"]/nav/div/ul/li[1]/a'
     HOME_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div[1]/h1'
+    COMMUNITY_TITLE = '//*[@id="gatsby-focus-wrapper"]/section[1]/div/div[1]/div/h1'
+    COFFEE_TITLE = '//*[@id="gatsby-focus-wrapper"]/section[2]/div/div[1]/div/h1'
+    CUSTOMER_TITLE = '//*[@id="gatsby-focus-wrapper"]/div[2]/div/div[1]/div/h1'
+
 
 
 class selectors_menu_page:
@@ -58,3 +62,13 @@ class selectors_billing_address:
     EMAIL = '//*[@id="snip-email"]'
     COUNTRY = '//*[@id="snip-country"]'
     PROVINCE = '//*[@id="snipprovince"]'
+
+class selectors_footer:
+    CONTACT_TITLE = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[1]/h5'
+    OPEN_HOURS = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[2]/h5'
+    SITE_LINKS = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/h5'
+    HOME = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[1]/a'
+    MENU = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[2]/a'
+    PRODUCTS = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[3]/a'
+    ABOUT = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[4]/a'
+    CONTACT_LINK = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[5]/a'
