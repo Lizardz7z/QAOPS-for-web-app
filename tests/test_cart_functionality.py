@@ -1,4 +1,3 @@
-import conftest
 from selectrs.locators import selectors_cart_page, selectors_products_page
 import pytest
 import allure

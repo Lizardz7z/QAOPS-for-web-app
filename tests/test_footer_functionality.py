@@ -1,4 +1,3 @@
-import conftest
 from selectrs.locators import selectors_base_page
 from selectrs.locators import selectors_footer
 from selectrs.locators import selectors_products_page
