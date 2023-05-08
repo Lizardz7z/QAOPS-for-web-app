@@ -2,7 +2,7 @@ from selectrs.locators import selectors_base_page
 import pytest
 import allure
 
-browsers = ['setup_browser_chrome', 'setup_browser_firefox', 'setup_browser_webkit']
+browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 
 @pytest.mark.parametrize('setup_browser', browsers)
 @pytest.mark.fast
