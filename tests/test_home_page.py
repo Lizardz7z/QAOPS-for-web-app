@@ -2,13 +2,15 @@ from selectrs.locators import selectors_base_page
 import pytest
 import allure
 
+browsers = ['setup_browser_chrome', 'setup_browser_firefox', 'setup_browser_webkit']
 
+@pytest.mark.parametrize('setup_browser', browsers)
 @pytest.mark.fast
 @allure.feature("Checking titles visibility")
 @allure.story("Проверка отображения заголовков отделов главной страницы")
-def test_titles_visibility(setup_browser):
+def test_titles_visibility(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
-        page = setup_browser
+        page = request.getfixturevalue(setup_browser)
     with allure.step("Переход на домашнюю страницу"):
         link = page.query_selector(selectors_base_page.HOME_PAGE_LINK)
         link.click()

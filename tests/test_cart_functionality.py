@@ -1,18 +1,19 @@
+import conftest
 from selectrs.locators import selectors_cart_page, selectors_products_page
 import pytest
 import allure
 
+browsers = ['setup_browser_chrome', 'setup_browser_firefox', 'setup_browser_webkit']
 
-@allure.feature("Cart functionality checking")
+@pytest.mark.parametrize('setup_browser', browsers)
 @pytest.mark.slow
+@allure.feature("Cart functionality checking")
 @allure.feature("Check goods adding to the cart")
 @allure.story("Проверка функции добавления товаров в корзину")
-def test_add_to_cart(setup_browser):
+def test_add_to_cart(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
-        page = setup_browser
-    with allure.step("Переход на страницу 'продукты'"):
-        link = page.query_selector(selectors_products_page.PRODUCTS_PAGE_LINK)
-        link.click()
+        page = request.getfixturevalue(setup_browser)
+        page.goto(selectors_products_page.PAGE_LINK)
         page.wait_for_timeout(2000)
     with allure.step("Добавление товаров в корзину"):
         products = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
