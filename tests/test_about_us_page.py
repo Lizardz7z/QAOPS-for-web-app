@@ -59,7 +59,8 @@ def test_check_block_2(setup_browser, request):
                                         "phenomenon, " \
                                         "a language understandable by most people " \
                                         "on earth. " \
-                                        "Coffee is a good with a very complex character, " \
+                                        "Coffee is a good with a very complex " \
+                                        "character, " \
                                         "multi-faceted, unpredictable. Coffee " \
                                         "opens up only " \
                                         "to those who devote to it a lot of time " \
@@ -114,7 +115,8 @@ def test_check_block_4(setup_browser, request):
         assert blocs[3].inner_text() == 'Coffee is a ritual, a small treat ' \
                                         'in the morning, "fuel", a break, chat, ' \
                                         'affair that makes up our lives. Making ' \
-                                        'the coffee better, we make our lives better. ' \
+                                        'the coffee better, we make our lives ' \
+                                        'better. ' \
                                         'With this concept in mind, our blends were ' \
                                         'developed ' \
                                         'by the leading professionals in the coffee ' \

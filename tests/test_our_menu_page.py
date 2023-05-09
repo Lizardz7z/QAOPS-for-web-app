@@ -23,20 +23,31 @@ def test_check_all_button(setup_browser, request):
         all_button = page.get_by_role("button", name='all')
         all_button.click()
         titles = page.query_selector_all(selectors_menu_page.DISHES)
-        products = ["Island Pitaya", "Vanilla Blue Sky", "Tomato Soup", "Broccoli & Cheddar Soup",
-                    "Ham, Egg & Cheese", "Egg & Cheese", "Avocad Egg White", 'Bacon Egg & Cheese',
-                    "Greek Salad", "Caesar Salad", "Chicken Burrito", "Breakfast Burrito", "Red Velvet",
-                    "Blueberry Restorer", "Island Tropics", "Healthy Glow", "Cinnamon Roll", "Iced Lemon Cake",
-                    "Classic Coffee Cake", "Cream Cheese Danish", "Blueberry Muffin", "Double Chocolate Chip Muffin",
-                    "Chocolate Croissant", "Almond Croissant", "Croissant", "Chocolate Cake Pop", "Dozen Bagels"
-                    "Half Dozen Bagel Box", "Poppy Seed Bagel", "Sesame Bagel", "Potato Roll", "Honey Whole Wheat"
-                    "Cinnamon Raisin Bagel", "Blueberry Bagel", "Spinach Bagel", "Cinnamon Sugar Bagel", "Plain Bagel"
-                    "Everything Bagel", "Cold Brew Coffee", "Pumpkin Cream Cold Brew", "Peppermint Mocha",
-                    "Salted Caramel Mocha", "Frappè", "Ras Chai", "Earl Grey (Organic)", "Rooibos Bergamot",
-                    "Moroccan Mint", "Cappuccino", "Flat White", "Latte Macchiato", "Caffè Latte", "Mocha",
+        products = ["Island Pitaya", "Vanilla Blue Sky", "Tomato Soup",
+                    "Broccoli & Cheddar Soup", "Ham, Egg & Cheese",
+                    "Egg & Cheese", "Avocad Egg White", 'Bacon Egg & Cheese',
+                    "Greek Salad", "Caesar Salad", "Chicken Burrito",
+                    "Breakfast Burrito", "Red Velvet",
+                    "Blueberry Restorer", "Island Tropics",
+                    "Healthy Glow", "Cinnamon Roll", "Iced Lemon Cake",
+                    "Classic Coffee Cake", "Cream Cheese Danish",
+                    "Blueberry Muffin", "Double Chocolate Chip Muffin",
+                    "Chocolate Croissant", "Almond Croissant", "Croissant",
+                    "Chocolate Cake Pop", "Dozen Bagels"
+                    "Half Dozen Bagel Box", "Poppy Seed Bagel", "Sesame Bagel",
+                    "Potato Roll", "Honey Whole Wheat"
+                    "Cinnamon Raisin Bagel", "Blueberry Bagel",
+                    "Spinach Bagel", "Cinnamon Sugar Bagel", "Plain Bagel"
+                    "Everything Bagel", "Cold Brew Coffee",
+                    "Pumpkin Cream Cold Brew", "Peppermint Mocha",
+                    "Salted Caramel Mocha", "Frappè",
+                    "Ras Chai", "Earl Grey (Organic)", "Rooibos Bergamot",
+                    "Moroccan Mint", "Cappuccino", "Flat White",
+                    "Latte Macchiato", "Caffè Latte", "Mocha",
                     "Doppio", "Caffè Americano"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], "The button 'all' is not clickable"
+            assert titles[1].inner_text() == products[i], \
+                "The button 'all' is not clickable"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -81,7 +92,8 @@ def test_check_soups_button(setup_browser, request):
         titles = page.query_selector_all(selectors_menu_page.DISHES)
         products = ["Tomato Soup", "Broccoli & Cheddar Soup"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], "The button 'soups' is not clickable"
+            assert titles[1].inner_text() == products[i], \
+                "The button 'soups' is not clickable"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -98,10 +110,12 @@ def test_check_breakfast_sandwiches_button(setup_browser, request):
         link.click()
         page.wait_for_timeout(2000)
     with allure.step("Нажатие на кнопку breakfast sandwiches"):
-        breakfast_sandwiches_button = page.get_by_role("button", name='breakfast sandwiches')
+        breakfast_sandwiches_button = page.get_by_role("button",
+                                                       name='breakfast sandwiches')
         breakfast_sandwiches_button.click()
         titles = page.query_selector_all(selectors_menu_page.DISHES)
-        products = ["Ham, Egg & Cheese", "Egg & Cheese", "Avocad Egg White", 'Bacon Egg & Cheese']
+        products = ["Ham, Egg & Cheese", "Egg & Cheese",
+                    "Avocad Egg White", 'Bacon Egg & Cheese']
         for i in range(len(titles)):
             assert titles[1].inner_text() == products[i], \
                 "The button 'breakfast sandwiches' is not clickable"
@@ -126,7 +140,8 @@ def test_check_salads_button(setup_browser, request):
         titles = page.query_selector_all(selectors_menu_page.DISHES)
         products = ["Greek Salad", "Caesar Salad"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], "The button 'salads' is not clickable"
+            assert titles[1].inner_text() == products[i], \
+                "The button 'salads' is not clickable"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -169,7 +184,8 @@ def test_check_smoothies_button(setup_browser, request):
         smoothies_button = page.get_by_role("button", name='smoothies')
         smoothies_button.click()
         titles = page.query_selector_all(selectors_menu_page.DISHES)
-        products = ["Red Velvet", "Blueberry Restorer", "Island Tropics", "Healthy Glow"]
+        products = ["Red Velvet", "Blueberry Restorer",
+                    "Island Tropics", "Healthy Glow"]
         for i in range(len(titles)):
             assert titles[1].inner_text() == products[i], \
                 "The button 'smoothies' is not clickable"
@@ -193,8 +209,10 @@ def test_check_bakery_button(setup_browser, request):
         bakery_button.click()
         titles = page.query_selector_all(selectors_menu_page.DISHES)
         products = ["Cinnamon Roll", "Iced Lemon Cake",
-                    "Classic Coffee Cake", "Cream Cheese Danish", "Blueberry Muffin", "Double Chocolate Chip Muffin",
-                    "Chocolate Croissant", "Almond Croissant", "Croissant", "Chocolate Cake Pop"]
+                    "Classic Coffee Cake", "Cream Cheese Danish",
+                    "Blueberry Muffin", "Double Chocolate Chip Muffin",
+                    "Chocolate Croissant", "Almond Croissant",
+                    "Croissant", "Chocolate Cake Pop"]
         for i in range(len(titles)):
             assert titles[1].inner_text() == products[i], \
                 "The button 'bakery' is not clickable"
@@ -217,9 +235,12 @@ def test_check_bagels_button(setup_browser, request):
         bagels_button = page.get_by_role("button", name='bagels')
         bagels_button.click()
         titles = page.query_selector_all(selectors_menu_page.DISHES)
-        products = ["Dozen Bagels", "Half Dozen Bagel Box", "Poppy Seed Bagel", "Sesame Bagel",
-                    "Potato Roll", "Honey Whole Wheat", "Cinnamon Raisin Bagel", "Blueberry Bagel",
-                    "Spinach Bagel", "Cinnamon Sugar Bagel", "Plain Bagel", "Everything Bagel"]
+        products = ["Dozen Bagels", "Half Dozen Bagel Box",
+                    "Poppy Seed Bagel", "Sesame Bagel",
+                    "Potato Roll", "Honey Whole Wheat",
+                    "Cinnamon Raisin Bagel", "Blueberry Bagel",
+                    "Spinach Bagel", "Cinnamon Sugar Bagel",
+                    "Plain Bagel", "Everything Bagel"]
         for i in range(len(titles)):
             assert titles[1].inner_text() == products[i], \
                 "The button 'bagels' is not clickable"
@@ -242,9 +263,11 @@ def test_check_coffee_button(setup_browser, request):
         coffee_button = page.get_by_role("button", name='coffee')
         coffee_button.click()
         titles = page.query_selector_all(selectors_menu_page.DISHES)
-        products = ["Cold Brew Coffee", "Pumpkin Cream Cold Brew", "Peppermint Mocha",
-                    "Salted Caramel Mocha", "Frappè", "Cappuccino", "Flat White",
-                    "Latte Macchiato", "Caffè Latte", "Mocha", "Doppio", "Caffè Americano"]
+        products = ["Cold Brew Coffee", "Pumpkin Cream Cold Brew",
+                    "Peppermint Mocha", "Salted Caramel Mocha",
+                    "Frappè", "Cappuccino", "Flat White",
+                    "Latte Macchiato", "Caffè Latte", "Mocha",
+                    "Doppio", "Caffè Americano"]
         for i in range(len(titles)):
             assert titles[1].inner_text() == products[i], \
                 "The button 'coffee' is not clickable"
