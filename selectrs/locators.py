@@ -11,6 +11,7 @@ class selectors_menu_page:
     PAGE_LINK = 'https://impresso-expresso.netlify.app/menu'
     OUR_MENU_PAGE_LINK = '[href="/menu"]'
     OUR_MENU_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+    DISHES = "mb-0"
 
 
 class selectors_products_page:
@@ -31,6 +32,9 @@ class selectors_contact_page:
     CONTACTUS_PAGE_LINK = '[href="/contact"]'
     CONTACTUS_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
     ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'
+    NAME = '//*[@id="name"]'
+    EMAIL = '//*[@id="email"]'
+    DESCRIPTION = '//*[@id="description"]'
 
 
 class selectors_cart_page:
@@ -49,6 +53,10 @@ class selectors_cart_page:
     NEXT_STEP_1 = '//*[@id="snipcart-actions"]/a'
     NEXT_STEP_2 = '//*[@id="snipcart-next"]'
     ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'
+    PREVIOUS_STEP = '//*[@id="snipcart-previous"]'
+    DELETE_ITEM_BUTTON = '.snip-product__remove'
+    EMPTY_CART = '//*[@id="snipcart-sub-content"]'
+    PROTECT = '.snip-footer__copyright'
 
 
 class selectors_billing_address:
@@ -73,3 +81,6 @@ class selectors_footer:
     PRODUCTS = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[3]/a'
     ABOUT = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[4]/a'
     CONTACT_LINK = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[3]/ul/li[5]/a'
+
+
+

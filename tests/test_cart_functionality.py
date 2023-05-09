@@ -114,6 +114,117 @@ def test_check_prices(setup_browser, request):
 @pytest.mark.parametrize('setup_browser', browsers)
 @pytest.mark.slow
 @allure.feature("Cart functionality checking")
+@allure.feature("Сhecking the removal of an item from the cart")
+@allure.story("Проверка удаления товара из корзины")
+def test_removing_an_item_from_the_cart(setup_browser, request):
+    with allure.step("Запуск браузера и открытие страницы"):
+        page = request.getfixturevalue(setup_browser)
+        page.goto(selectors_products_page.PAGE_LINK)
+        page.wait_for_timeout(2000)
+    with allure.step("Добавление товаров в корзину"):
+        products = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
+        products[3].click()
+        page.wait_for_timeout(2000)
+        close_button = page.query_selector(selectors_cart_page.CART_CLOSE_BUTTON)
+        close_button.click()
+        page.wait_for_timeout(1000)
+        cart_link = page.query_selector(selectors_cart_page.CART_PAGE_LINK)
+        cart_link.click()
+        page.wait_for_timeout(2000)
+    with allure.step("Удаление товара из корзины"):
+        delete_button = page.query_selector(selectors_cart_page.DELETE_ITEM_BUTTON)
+        delete_button.click()
+        page.wait_for_timeout(2000)
+        assert page.query_selector(selectors_cart_page.EMPTY_CART).inner_text() == \
+               "THE CART IS NOW EMPTY. SELECT SOME PRODUCTS TO BUY BEFORE CHECKING OUT.", \
+               "Items are not deleted"
+
+
+@pytest.mark.parametrize('setup_browser', browsers)
+@pytest.mark.slow
+@allure.feature("Cart functionality checking")
+@allure.feature("Сheck a privacy display")
+@allure.story("Проверка наличия надписи о шифровании данных при оплате")
+def test_next_step(setup_browser, request):
+    with allure.step("Запуск браузера и открытие страницы"):
+        page = request.getfixturevalue(setup_browser)
+        page.goto(selectors_products_page.PAGE_LINK)
+        page.wait_for_timeout(2000)
+    with allure.step("Добавление товаров в корзину"):
+        products = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
+        products[3].click()
+        page.wait_for_timeout(2000)
+        close_button = page.query_selector(selectors_cart_page.CART_CLOSE_BUTTON)
+        close_button.click()
+        page.wait_for_timeout(1000)
+        cart_link = page.query_selector(selectors_cart_page.CART_PAGE_LINK)
+        cart_link.click()
+        page.wait_for_timeout(2000)
+    with allure.step("Проверка наличия надписи о шифровании"):
+        protect = page.query_selector(selectors_cart_page.PROTECT)
+        assert protect.inner_text() == "POWERED AND SECURED BY SNIPCART", \
+            "Encryption information is not displayed"
+
+
+@pytest.mark.parametrize('setup_browser', browsers)
+@pytest.mark.slow
+@allure.feature("Cart functionality checking")
+@allure.feature("Сhecking the ability to go to the next page")
+@allure.story("Проверка перехода на страницу вперед")
+def test_next_step(setup_browser, request):
+    with allure.step("Запуск браузера и открытие страницы"):
+        page = request.getfixturevalue(setup_browser)
+        page.goto(selectors_products_page.PAGE_LINK)
+        page.wait_for_timeout(2000)
+    with allure.step("Добавление товаров в корзину"):
+        products = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
+        products[3].click()
+        page.wait_for_timeout(2000)
+        close_button = page.query_selector(selectors_cart_page.CART_CLOSE_BUTTON)
+        close_button.click()
+        page.wait_for_timeout(1000)
+        cart_link = page.query_selector(selectors_cart_page.CART_PAGE_LINK)
+        cart_link.click()
+        page.wait_for_timeout(2000)
+    with allure.step("Переход к оформлению заказа"):
+        next_step_button = page.query_selector(selectors_cart_page.NEXT_STEP_1)
+        next_step_button.click()
+        page.wait_for_timeout(2000)
+
+
+@pytest.mark.parametrize('setup_browser', browsers)
+@pytest.mark.slow
+@allure.feature("Cart functionality checking")
+@allure.feature("Сhecking the ability to go to the previous page")
+@allure.story("Проверка перехода на предыдущую страницу")
+def test_previous_step(setup_browser, request):
+    with allure.step("Запуск браузера и открытие страницы"):
+        page = request.getfixturevalue(setup_browser)
+        page.goto(selectors_products_page.PAGE_LINK)
+        page.wait_for_timeout(2000)
+    with allure.step("Добавление товаров в корзину"):
+        products = page.query_selector_all(selectors_products_page.ITEMS_SELECTOR)
+        products[3].click()
+        page.wait_for_timeout(2000)
+        close_button = page.query_selector(selectors_cart_page.CART_CLOSE_BUTTON)
+        close_button.click()
+        page.wait_for_timeout(1000)
+        cart_link = page.query_selector(selectors_cart_page.CART_PAGE_LINK)
+        cart_link.click()
+        page.wait_for_timeout(2000)
+    with allure.step("Переход к оформлению заказа"):
+        next_step_button = page.query_selector(selectors_cart_page.NEXT_STEP_1)
+        next_step_button.click()
+        page.wait_for_timeout(2000)
+    with allure.step("Переход на страницу назад"):
+        next_step_button = page.query_selector(selectors_cart_page.PREVIOUS_STEP)
+        next_step_button.click()
+        page.wait_for_timeout(2000)
+
+
+@pytest.mark.parametrize('setup_browser', browsers)
+@pytest.mark.slow
+@allure.feature("Cart functionality checking")
 @allure.feature("Сhecking for empty fields")
 @allure.story("Проверка пустых полей")
 def test_check_empty_fields(setup_browser, request):
