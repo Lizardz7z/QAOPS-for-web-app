@@ -1,5 +1,6 @@
 import re
-from selectrs.locators import selectors_cart_page, selectors_products_page, selectors_billing_address
+from selectrs.locators import selectors_cart_page, selectors_products_page, \
+    selectors_billing_address
 import pytest
 import allure
 
