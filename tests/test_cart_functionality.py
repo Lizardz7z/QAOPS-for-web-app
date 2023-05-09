@@ -87,14 +87,16 @@ def test_check_prices(setup_browser, request):
         prices = page.query_selector_all(selectors_cart_page.ITEMS_IN_CART)
         prices_home = page.query_selector_all(selectors_cart_page.ITEMS_SELECTOR)
         page.wait_for_timeout(2000)
-        our_products = {prices_home[i].get_attribute(selectors_cart_page.DATA_ITEM_NAME_ATTRIBUTE).upper():
-                        float(prices_home[i].get_attribute(selectors_cart_page.DATA_ITEM_PRICE_ATTRIBUTE))
-                        for i in range(len(prices_home))}
+        our_products = {prices_home[i].get_attribute(
+            selectors_cart_page.DATA_ITEM_NAME_ATTRIBUTE).upper():
+            float(prices_home[i].get_attribute(selectors_cart_page.DATA_ITEM_PRICE_ATTRIBUTE))
+            for i in range(len(prices_home))}
         subtotal = 0.0
         for i in range(len(prices)):
             total = prices[i].query_selector(selectors_cart_page.UNIT_PRICE)
             total = float(total.inner_text()[1:])
-            assert total == our_products[prices[i].query_selector(selectors_cart_page.PRODUCT_NAME).inner_text()], \
+            assert total == our_products[prices[i].query_selector(
+                selectors_cart_page.PRODUCT_NAME).inner_text()], \
                 "The price calculated incorrectly"
             total *= int(prices[i].query_selector(selectors_cart_page.QUANTITY).inner_text())
             total_price = prices[i].query_selector(selectors_cart_page.TOTAL_PRICE).inner_text()[1:]
@@ -134,13 +136,15 @@ def test_check_empty_fields(setup_browser, request):
         assert page.locator("div").filter(
             has_text=re.compile(r"^NameThis field is required$")), "No empty name handling"
     with allure.step("Проверка пустого адреса"):
-        assert page.locator("div").filter(has_text=re.compile(r"^StreetAddressThis field is required$")), \
+        assert page.locator("div").filter(has_text=re.compile(
+            r"^StreetAddressThis field is required$")), \
             "No empty street address handling"
     with allure.step("Проверка пустого города"):
         assert page.locator("div").filter(
             has_text=re.compile(r"^CityThis field is required$")), "No empty city handling"
     with allure.step("Проверка пустого индекса"):
-        assert page.locator("div").filter(has_text=re.compile(r"^ZIP / Postal codeThis field is required$")), \
+        assert page.locator("div").filter(has_text=re.compile(
+            r"^ZIP / Postal codeThis field is required$")), \
             "No empty zip handling"
     with allure.step("Проверка пустого почтового адреса"):
         assert page.locator("div").filter(
@@ -175,7 +179,8 @@ def test_check_name(setup_browser, request):
         name_field = page.query_selector(selectors_billing_address.NAME)
         name_field.fill("Lisa and Masha")
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_billing_address.NAME) == "Lisa and Masha", "Name cannot be entered"
+        assert page.input_value(selectors_billing_address.NAME) == "Lisa and Masha", \
+            "Name cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -206,7 +211,8 @@ def test_check_company_name(setup_browser, request):
         company_name_field = page.query_selector(selectors_billing_address.COMPANY)
         company_name_field.fill("HSE")
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_billing_address.COMPANY) == 'HSE', "Name cannot be entered"
+        assert page.input_value(selectors_billing_address.COMPANY) == 'HSE', \
+            "Name cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -238,7 +244,8 @@ def test_check_street_address(setup_browser, request):
         street_address_field.fill("Lvovskaya 1v")
         page.wait_for_timeout(2000)
         assert page.input_value(
-            selectors_billing_address.ADDRESS1) == "Lvovskaya 1v", "Street address 1 cannot be entered"
+            selectors_billing_address.ADDRESS1) == "Lvovskaya 1v", \
+            "Street address 1 cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -270,7 +277,8 @@ def test_check_street_address_2(setup_browser, request):
         street_address_2_field.fill("Rodionova 136")
         page.wait_for_timeout(2000)
         assert page.input_value(
-            selectors_billing_address.ADDRESS2) == "Rodionova 136", "Street address 2 cannot be entered"
+            selectors_billing_address.ADDRESS2) == "Rodionova 136", \
+            "Street address 2 cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -301,7 +309,8 @@ def test_check_city(setup_browser, request):
         city_field = page.query_selector(selectors_billing_address.CITY)
         city_field.fill("Nizhny Novgorod")
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_billing_address.CITY) == "Nizhny Novgorod", "City cannot be entered"
+        assert page.input_value(selectors_billing_address.CITY) == \
+               "Nizhny Novgorod", "City cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -332,7 +341,8 @@ def test_check_postal_code(setup_browser, request):
         postal_code_field = page.query_selector(selectors_billing_address.ZIP)
         postal_code_field.fill('603093')
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_billing_address.ZIP) == "603093", "Postal code cannot be entered"
+        assert page.input_value(selectors_billing_address.ZIP) == "603093", \
+            "Postal code cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -363,7 +373,8 @@ def test_check_phone(setup_browser, request):
         phone_field = page.query_selector(selectors_billing_address.PHONE)
         phone_field.fill("+7(831)436‒17‒52")
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_billing_address.PHONE) == "+7(831)436‒17‒52", "Phone cannot be entered"
+        assert page.input_value(selectors_billing_address.PHONE) == \
+               "+7(831)436‒17‒52", "Phone cannot be entered"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -394,16 +405,20 @@ def test_check_email(setup_browser, request):
         email_field = page.query_selector(selectors_billing_address.EMAIL)
         email_field.fill('student@edu.hse.ru')
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_billing_address.EMAIL) == 'student@edu.hse.ru', "Email cannot be entered"
+        assert page.input_value(selectors_billing_address.EMAIL) == \
+               'student@edu.hse.ru', "Email cannot be entered"
     with allure.step("Переход к оплате заказа"):
         next_step_button = page.query_selector(selectors_cart_page.NEXT_STEP_2)
         next_step_button.click()
         page.wait_for_timeout(2000)
     with allure.step("Проверка обработки валидности почтового адреса"):
-        assert (re.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", 'student@edu.hse.ru') is None and
-                page.locator("div").filter(has_text=re.compile(r"^The email must be valid$"))) or \
-               (re.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$", 'student@edu.hse.ru') is not None and
-                page.locator("div").filter(has_text=re.compile(r"^The email must be valid$") is None)), \
+        assert (re.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
+                'student@edu.hse.ru') is None and page.locator("div").filter(
+                has_text=re.compile(r"^The email must be valid$"))) or \
+                (re.match("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$",
+                 'student@edu.hse.ru') is not None and
+                page.locator("div").filter(has_text=re.compile(
+                    r"^The email must be valid$") is None)), \
                "Wrong email handling"
 
 
@@ -475,10 +490,12 @@ def test_check_province(setup_browser, request):
             page.wait_for_timeout(2000)
             assert province_dropdown.input_value() == i, "Province dropdown not working"
         with allure.step("Выбор провинции (США)"):
-            values_us = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU', 'HI', 'ID',
-                         'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE',
-                         'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC',
-                         'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY', 'AA', 'AE', 'AP']
+            values_us = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL',
+                         'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH',
+                         'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM',
+                         'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC',
+                         'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY', 'AA',
+                         'AE', 'AP']
             country_dropdown = page.query_selector(selectors_billing_address.COUNTRY)
             country_dropdown.select_option(value='US')
             page.wait_for_timeout(2000)
