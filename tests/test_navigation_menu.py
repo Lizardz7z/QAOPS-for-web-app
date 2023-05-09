@@ -17,7 +17,7 @@ class Tests:
         with allure.step("Запуск браузера и открытие страницы"):
             page = request.getfixturevalue(setup_browser)
         with allure.step("Проверка видимости кнопки 'home'"):
-            link=page.query_selector(selectors_base_page.HOME_PAGE_LINK)
+            link = page.query_selector(selectors_base_page.HOME_PAGE_LINK)
             assert link.inner_text().upper() == "HOME", \
                                                 "Home button is invisible"
         with allure.step("Проверка видимости кнопки 'menu'"):
@@ -36,6 +36,7 @@ class Tests:
             link = page.query_selector(selectors_contact_page.CONTACTUS_PAGE_LINK)
             assert link.inner_text().upper() == "CONTACT US", \
                                                 "Contact button is invisible"
+
     @pytest.mark.parametrize('setup_browser', browsers)
     @pytest.mark.fast
     @allure.feature("Move to home page throw navigation menu")
@@ -137,4 +138,5 @@ class Tests:
                 selectors_cart_page.CART_PAGE_TITLE)
             assert title.inner_text().upper() == "MY CART", \
                 "Link to cart page is not working"
+
 

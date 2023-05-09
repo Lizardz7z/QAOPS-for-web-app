@@ -15,6 +15,8 @@ testdata = [
     selectors_about_page.PAGE_LINK,
     selectors_contact_page.PAGE_LINK
 ]
+
+
 @pytest.mark.parametrize("link_to", testdata)
 @pytest.mark.parametrize("setup_browser", browsers)
 @allure.feature("Checking footer titles visibility")
@@ -61,6 +63,7 @@ def test_footer_link_to_home(setup_browser, link_to, request):
         assert title.inner_text().upper() == "IMPRESSO ESPRESSO", \
             "Link to home page from footer is not working"
 
+
 @pytest.mark.parametrize("link_to", testdata)
 @pytest.mark.parametrize("setup_browser", browsers)
 @allure.feature("Checking link from footer to menu page")
@@ -82,6 +85,7 @@ def test_footer_link_to_menu(setup_browser, link_to, request):
             selectors_menu_page.OUR_MENU_PAGE_TITLE)
         assert title.inner_text().upper() == "OUR MENU", \
             "Link to menu page from footer is not working"
+
 
 @pytest.mark.parametrize("link_to", testdata)
 @pytest.mark.parametrize("setup_browser", browsers)
@@ -105,6 +109,7 @@ def test_footer_link_to_products(setup_browser, link_to, request):
         assert title.inner_text().upper() == "PRODUCTS", \
             "Link to products page from footer is not working"
 
+
 @pytest.mark.parametrize("link_to", testdata)
 @pytest.mark.parametrize("setup_browser", browsers)
 @allure.feature("Checking link from footer to info page")
@@ -126,6 +131,7 @@ def test_footer_link_to_info(setup_browser, link_to, request):
             selectors_about_page.ABOUT_PAGE_TITLE)
         assert title.inner_text().upper() == "ABOUT US", \
             "Link to about page from footer is not working"
+
 
 @pytest.mark.parametrize("link_to", testdata)
 @pytest.mark.parametrize("setup_browser", browsers)

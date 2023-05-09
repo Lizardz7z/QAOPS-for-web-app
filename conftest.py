@@ -13,6 +13,7 @@ def setup_browser_chrome():
         yield page
         browser.close()
 
+
 @pytest.fixture(scope="function")
 def setup_browser_firefox():
     with sync_playwright() as p:
@@ -21,14 +22,4 @@ def setup_browser_firefox():
         page.goto(selectors_base_page.PAGE_LINK)
         yield page
         browser.close()
-
-@pytest.fixture(scope="function")
-def setup_browser_webkit():
-    with sync_playwright() as p:
-        browser = p.webkit.launch(headless=True)
-        page = browser.new_page()
-        page.goto(selectors_base_page.PAGE_LINK)
-        yield page
-        browser.close()
-
 

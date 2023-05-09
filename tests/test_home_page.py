@@ -4,6 +4,7 @@ import allure
 
 browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 
+
 @pytest.mark.parametrize('setup_browser', browsers)
 @pytest.mark.fast
 @allure.feature("Checking titles visibility")

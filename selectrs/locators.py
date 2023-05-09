@@ -7,7 +7,6 @@ class selectors_base_page:
     CUSTOMER_TITLE = '//*[@id="gatsby-focus-wrapper"]/div[2]/div/div[1]/div/h1'
 
 
-
 class selectors_menu_page:
     PAGE_LINK = 'https://impresso-expresso.netlify.app/menu'
     OUR_MENU_PAGE_LINK = '[href="/menu"]'
@@ -49,6 +48,7 @@ class selectors_cart_page:
     TOTAL_PRICE = '[data-bind="totalPrice"]'
     NEXT_STEP_1 = '//*[@id="snipcart-actions"]/a'
     NEXT_STEP_2 = '//*[@id="snipcart-next"]'
+    ITEMS_SELECTOR = '//section/div/div/div/div/div/div/button'
 
 
 class selectors_billing_address:
@@ -62,6 +62,7 @@ class selectors_billing_address:
     EMAIL = '//*[@id="snip-email"]'
     COUNTRY = '//*[@id="snip-country"]'
     PROVINCE = '//*[@id="snipprovince"]'
+
 
 class selectors_footer:
     CONTACT_TITLE = '//*[@id="gatsby-focus-wrapper"]/footer/div/div/div[1]/h5'
