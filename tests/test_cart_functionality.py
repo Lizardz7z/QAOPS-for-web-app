@@ -99,8 +99,10 @@ def test_check_prices(setup_browser, request):
             assert total == our_products[prices[i].query_selector(
                 selectors_cart_page.PRODUCT_NAME).inner_text()], \
                 "The price calculated incorrectly"
-            total *= int(prices[i].query_selector(selectors_cart_page.QUANTITY).inner_text())
-            total_price = prices[i].query_selector(selectors_cart_page.TOTAL_PRICE).inner_text()[1:]
+            total *= int(prices[i].query_selector(
+                selectors_cart_page.QUANTITY).inner_text())
+            total_price = prices[i].query_selector(
+                selectors_cart_page.TOTAL_PRICE).inner_text()[1:]
             assert total == float(total_price), "The total price calculated incorrectly"
             subtotal += float(total)
         sum_of_products = page.query_selector(selectors_cart_page.SUM_OF_PRODUCTS)
@@ -135,21 +137,24 @@ def test_check_empty_fields(setup_browser, request):
         page.wait_for_timeout(2000)
     with allure.step("Проверка пустого имени"):
         assert page.locator("div").filter(
-            has_text=re.compile(r"^NameThis field is required$")), "No empty name handling"
+            has_text=re.compile(r"^NameThis field is required$")), \
+            "No empty name handling"
     with allure.step("Проверка пустого адреса"):
         assert page.locator("div").filter(has_text=re.compile(
             r"^StreetAddressThis field is required$")), \
             "No empty street address handling"
     with allure.step("Проверка пустого города"):
         assert page.locator("div").filter(
-            has_text=re.compile(r"^CityThis field is required$")), "No empty city handling"
+            has_text=re.compile(r"^CityThis field is required$")), \
+            "No empty city handling"
     with allure.step("Проверка пустого индекса"):
         assert page.locator("div").filter(has_text=re.compile(
             r"^ZIP / Postal codeThis field is required$")), \
             "No empty zip handling"
     with allure.step("Проверка пустого почтового адреса"):
         assert page.locator("div").filter(
-            has_text=re.compile(r"^EmailThis field is required$")), "No empty email handling"
+            has_text=re.compile(r"^EmailThis field is required$")), \
+            "No empty email handling"
 
 
 @pytest.mark.parametrize('setup_browser', browsers)
@@ -481,7 +486,8 @@ def test_check_province(setup_browser, request):
         next_step_button.click()
         page.wait_for_timeout(2000)
     with allure.step("Выбор провинции (Канада)"):
-        values_ca = ['AB', 'BC', 'MB', 'NB', 'NL', 'NT', 'NS', 'NU', 'ON', 'PE', 'QC', 'SK', 'YT']
+        values_ca = ['AB', 'BC', 'MB', 'NB', 'NL', 'NT', 'NS', 'NU', 'ON',
+                     'PE', 'QC', 'SK', 'YT']
         country_dropdown = page.query_selector(selectors_billing_address.COUNTRY)
         country_dropdown.select_option(value='CA')
         page.wait_for_timeout(2000)
@@ -491,12 +497,12 @@ def test_check_province(setup_browser, request):
             page.wait_for_timeout(2000)
             assert province_dropdown.input_value() == i, "Province dropdown not working"
         with allure.step("Выбор провинции (США)"):
-            values_us = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL',
-                         'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH',
-                         'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM',
-                         'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW', 'PA', 'PR', 'RI', 'SC',
-                         'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY', 'AA',
-                         'AE', 'AP']
+            values_us = ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM',
+                         'FL', 'GA', 'GU', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA',
+                         'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV',
+                         'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR', 'PW',
+                         'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA',
+                         'WA', 'WV', 'WI', 'WY', 'AA', 'AE', 'AP']
             country_dropdown = page.query_selector(selectors_billing_address.COUNTRY)
             country_dropdown.select_option(value='US')
             page.wait_for_timeout(2000)
@@ -504,4 +510,5 @@ def test_check_province(setup_browser, request):
             for i in values_us:
                 province_dropdown.select_option(value=i)
                 page.wait_for_timeout(2000)
-                assert province_dropdown.input_value() == i, "Province dropdown not working"
+                assert province_dropdown.input_value() == i, \
+                    "Province dropdown not working"
