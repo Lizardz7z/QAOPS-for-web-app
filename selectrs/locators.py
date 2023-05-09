@@ -25,6 +25,7 @@ class selectors_about_page:
     PAGE_LINK = 'https://impresso-expresso.netlify.app/about'
     ABOUT_PAGE_LINK = '[href="/about"]'
     ABOUT_PAGE_TITLE = '//*[@id="gatsby-focus-wrapper"]/div/h1'
+    BLOCKS = '//*[@id="___gatsby"]/div[1]/section/div/div[2]/div/p'
 
 
 class selectors_contact_page:
