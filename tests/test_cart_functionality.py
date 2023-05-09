@@ -136,7 +136,8 @@ def test_removing_an_item_from_the_cart(setup_browser, request):
         delete_button.click()
         page.wait_for_timeout(2000)
         assert page.query_selector(selectors_cart_page.EMPTY_CART).inner_text() == \
-               "THE CART IS NOW EMPTY. SELECT SOME PRODUCTS TO BUY BEFORE CHECKING OUT.", \
+               "THE CART IS NOW EMPTY. SELECT SOME PRODUCTS TO BUY " \
+               "BEFORE CHECKING OUT.", \
                "Items are not deleted"
 
 
@@ -145,7 +146,7 @@ def test_removing_an_item_from_the_cart(setup_browser, request):
 @allure.feature("Cart functionality checking")
 @allure.feature("Сheck a privacy display")
 @allure.story("Проверка наличия надписи о шифровании данных при оплате")
-def test_next_step(setup_browser, request):
+def test_privacy_display(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
         page.goto(selectors_products_page.PAGE_LINK)

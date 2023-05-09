@@ -65,5 +65,6 @@ def test_check_description_contact_us(setup_browser, request):
         name_field = page.query_selector(selectors_contact_page.DESCRIPTION)
         name_field.fill("We love coffee!")
         page.wait_for_timeout(2000)
-        assert page.input_value(selectors_contact_page.DESCRIPTION) == "We love coffee!", \
+        assert page.input_value(selectors_contact_page.DESCRIPTION) == \
+               "We love coffee!", \
             "Description cannot be entered"

@@ -31,8 +31,8 @@ def test_check_block_1(setup_browser, request):
                                         "understanding " \
                                         "is a full-flavoured, balanced, and easily " \
                                         "recognizable " \
-                                        "taste of our coffees. We source and buy green " \
-                                        "coffees " \
+                                        "taste of our coffees. We source and buy " \
+                                        "green coffees " \
                                         "directly from farmers.", \
                                         "Block 1 is not displayed"
 
@@ -60,8 +60,8 @@ def test_check_block_2(setup_browser, request):
                                         "a language understandable by most people " \
                                         "on earth. " \
                                         "Coffee is a good with a very complex character, " \
-                                        "multi-faceted, unpredictable. Coffee opens " \
-                                        "up only " \
+                                        "multi-faceted, unpredictable. Coffee " \
+                                        "opens up only " \
                                         "to those who devote to it a lot of time " \
                                         "and energy, " \
                                         "those who ponder over it and admire it.", \
@@ -115,8 +115,10 @@ def test_check_block_4(setup_browser, request):
                                         'in the morning, "fuel", a break, chat, ' \
                                         'affair that makes up our lives. Making ' \
                                         'the coffee better, we make our lives better. ' \
-                                        'With this concept in mind, our blends were developed ' \
-                                        'by the leading professionals in the coffee industry.', \
+                                        'With this concept in mind, our blends were ' \
+                                        'developed ' \
+                                        'by the leading professionals in the coffee ' \
+                                        'industry.', \
                                         "Block 4 is not displayed"
 
 
