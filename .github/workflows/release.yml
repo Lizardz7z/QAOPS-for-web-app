@@ -1,26 +1,33 @@
-name: release
+name: Release
+
 on:
+  workflow_dispatch:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
+    paths:
+      - '.github/workflows/release.yml'
+
 jobs:
   release:
-    name: release
+    name: Release
     runs-on: ubuntu-latest
+    if: github.repository_owner == 'Lizardz7z'
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          node-version: '14'
-          cache: npm
-      - run: npm ci
-      - run: npm run build
-      - run: rm .gitignore
-      - run: npx semantic-release
+          persist-credentials: false
+          fetch-depth: 0
+
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v3.1.1
+        with:
+          semantic_version: 18
+          extra_plugins: |
+            @semantic-release/changelog@6.0.1
+            @semantic-release/git@10.0.1
+            conventional-changelog-conventionalcommits@5.0.0
+            conventional-changelog-eslint@3.0.9
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - run: >-
-          git push
-          https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          HEAD:refs/heads/v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.SEMANTIC_RELEASE_TOKEN }}
