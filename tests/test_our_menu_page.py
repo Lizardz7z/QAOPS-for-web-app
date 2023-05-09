@@ -34,11 +34,11 @@ def test_check_all_button(setup_browser, request):
                     "Blueberry Muffin", "Double Chocolate Chip Muffin",
                     "Chocolate Croissant", "Almond Croissant", "Croissant",
                     "Chocolate Cake Pop", "Dozen Bagels"
-                                          "Half Dozen Bagel Box", "Poppy Seed Bagel", "Sesame Bagel",
+                    "Half Dozen Bagel Box", "Poppy Seed Bagel", "Sesame Bagel",
                     "Potato Roll", "Honey Whole Wheat"
-                                   "Cinnamon Raisin Bagel", "Blueberry Bagel",
+                    "Cinnamon Raisin Bagel", "Blueberry Bagel",
                     "Spinach Bagel", "Cinnamon Sugar Bagel", "Plain Bagel"
-                                                             "Everything Bagel", "Cold Brew Coffee",
+                    "Everything Bagel", "Cold Brew Coffee",
                     "Pumpkin Cream Cold Brew", "Peppermint Mocha",
                     "Salted Caramel Mocha", "Frappè",
                     "Ras Chai", "Earl Grey (Organic)", "Rooibos Bergamot",
