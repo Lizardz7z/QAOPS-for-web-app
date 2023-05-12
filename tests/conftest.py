@@ -1,7 +1,7 @@
 import pytest
 from playwright.sync_api import sync_playwright
 
-from tests.project_selectors.locators import SelectorsBasePage
+from project_selectors.locators import SelectorsBasePage
 
 
 @pytest.fixture(scope="function")
