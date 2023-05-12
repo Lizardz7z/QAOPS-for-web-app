@@ -1,6 +1,6 @@
-from project_selectors.locators import SelectorsBasePage, SelectorsCartPage
-from project_selectors.locators import SelectorsProductsPage, SelectorsContactPage
-from project_selectors.locators import SelectorsAboutPage, SelectorsMenuPage
+from tests.project_selectors.locators import SelectorsBasePage, SelectorsCartPage
+from tests.project_selectors.locators import SelectorsProductsPage, SelectorsContactPage
+from tests.project_selectors.locators import SelectorsAboutPage, SelectorsMenuPage
 import pytest
 import allure
 
