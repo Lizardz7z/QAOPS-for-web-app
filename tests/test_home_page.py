@@ -1,4 +1,4 @@
-from tests.project_selectors.locators import SelectorsBasePage
+from project_selectors.locators import SelectorsBasePage
 import pytest
 import allure
 

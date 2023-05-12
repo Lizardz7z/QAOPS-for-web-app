@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from tests.project_selectors.locators import SelectorsContactPage
+from project_selectors.locators import SelectorsContactPage
 
 browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 

@@ -1,5 +1,5 @@
 import re
-from tests.project_selectors.locators import SelectorsCartPage, SelectorsProductsPage, \
+from project_selectors.locators import SelectorsCartPage, SelectorsProductsPage, \
     SelectorsBillingAddress
 import pytest
 import allure
