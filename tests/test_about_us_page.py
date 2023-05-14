@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from project_selectors.locators import SelectorsAboutPage
+from About_us import AboutUsPage
 
 browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 
@@ -14,13 +14,10 @@ browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 def test_check_block_1(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsAboutPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsAboutPage.ABOUT_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        about_us = AboutUsPage(page)
+        about_us.about_us_link()
     with allure.step('Проверка 1 блока'):
-        blocs = page.query_selector_all(SelectorsAboutPage.BLOCKS)
+        blocs = about_us.blocks()
         assert blocs[0].inner_text() == "We - we roast coffee. Craft of coffee " \
                                         "roasting " \
                                         "is what we know best. We demand the same " \
@@ -45,13 +42,10 @@ def test_check_block_1(setup_browser, request):
 def test_check_block_2(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsAboutPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsAboutPage.ABOUT_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        about_us = AboutUsPage(page)
+        about_us.about_us_link()
     with allure.step('Проверка 2 блока'):
-        blocs = page.query_selector_all(SelectorsAboutPage.BLOCKS)
+        blocs = about_us.blocks()
         assert blocs[1].inner_text() == "We love coffee. Coffee bean is fascinating. " \
                                         "There is nothing that simple and yet that " \
                                         "difficult " \
@@ -77,13 +71,10 @@ def test_check_block_2(setup_browser, request):
 def test_check_block_3(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsAboutPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsAboutPage.ABOUT_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        about_us = AboutUsPage(page)
+        about_us.about_us_link()
     with allure.step('Проверка 3 блока'):
-        blocs = page.query_selector_all(SelectorsAboutPage.BLOCKS)
+        blocs = about_us.blocks()
         assert blocs[2].inner_text() == "In specialty coffee culture an ability to " \
                                         "properly brew coffee is summing it all up. " \
                                         "In one cup of coffee we bring together " \
@@ -105,13 +96,10 @@ def test_check_block_3(setup_browser, request):
 def test_check_block_4(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsAboutPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsAboutPage.ABOUT_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        about_us = AboutUsPage(page)
+        about_us.about_us_link()
     with allure.step('Проверка 4 блока'):
-        blocs = page.query_selector_all(SelectorsAboutPage.BLOCKS)
+        blocs = about_us.blocks()
         assert blocs[3].inner_text() == 'Coffee is a ritual, a small treat ' \
                                         'in the morning, "fuel", a break, chat, ' \
                                         'affair that makes up our lives. Making ' \
@@ -132,13 +120,10 @@ def test_check_block_4(setup_browser, request):
 def test_check_block_5(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsAboutPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsAboutPage.ABOUT_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        about_us = AboutUsPage(page)
+        about_us.about_us_link()
     with allure.step('Проверка 5 блока'):
-        blocs = page.query_selector_all(SelectorsAboutPage.BLOCKS)
+        blocs = about_us.blocks()
         assert blocs[4].inner_text() == 'Strive for learning new things creates ' \
                                         'a forward movement, a self-improvement. ' \
                                         'Beauty of coffee is that it is an ' \

@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from project_selectors.locators import SelectorsMenuPage
+from Our_menu import MenuPage
 
 browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 
@@ -14,15 +14,12 @@ browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 def test_check_all_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку all"):
-        all_button = page.get_by_role("button", name='all')
+        all_button = menu.button("all")
         all_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Island Pitaya", "Vanilla Blue Sky", "Tomato Soup",
                     "Broccoli & Cheddar Soup", "Ham, Egg & Cheese",
                     "Egg & Cheese", "Avocad Egg White", 'Bacon Egg & Cheese',
@@ -46,7 +43,7 @@ def test_check_all_button(setup_browser, request):
                     "Latte Macchiato", "Caffè Latte", "Mocha",
                     "Doppio", "Caffè Americano"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'all' is not clickable"
 
 
@@ -58,18 +55,15 @@ def test_check_all_button(setup_browser, request):
 def test_check_acai_bowls_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку acai bowls"):
-        acai_bowls_button = page.get_by_role("button", name='Acai Bowls')
+        acai_bowls_button = menu.button('Acai Bowls')
         acai_bowls_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Island Pitaya", "Vanilla Blue Sky"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'acai bowls' is not clickable"
 
 
@@ -81,18 +75,15 @@ def test_check_acai_bowls_button(setup_browser, request):
 def test_check_soups_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку soups"):
-        soups_button = page.get_by_role("button", name='soups')
+        soups_button = menu.button('soups')
         soups_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Tomato Soup", "Broccoli & Cheddar Soup"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'soups' is not clickable"
 
 
@@ -104,20 +95,16 @@ def test_check_soups_button(setup_browser, request):
 def test_check_breakfast_sandwiches_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку breakfast sandwiches"):
-        breakfast_sandwiches_button = page.get_by_role("button",
-                                                       name='breakfast sandwiches')
+        breakfast_sandwiches_button = menu.button('breakfast sandwiches')
         breakfast_sandwiches_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Ham, Egg & Cheese", "Egg & Cheese",
                     "Avocad Egg White", 'Bacon Egg & Cheese']
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'breakfast sandwiches' is not clickable"
 
 
@@ -129,18 +116,15 @@ def test_check_breakfast_sandwiches_button(setup_browser, request):
 def test_check_salads_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку salads"):
-        salads_button = page.get_by_role("button", name='salads')
+        salads_button = menu.button('salads')
         salads_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Greek Salad", "Caesar Salad"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'salads' is not clickable"
 
 
@@ -152,18 +136,15 @@ def test_check_salads_button(setup_browser, request):
 def test_check_burritos_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку burritos"):
-        burritos_button = page.get_by_role("button", name='Burritos')
+        burritos_button = menu.button('Burritos')
         burritos_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Chicken Burrito", "Breakfast Burrito"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'burritos' is not clickable"
 
 
@@ -175,19 +156,16 @@ def test_check_burritos_button(setup_browser, request):
 def test_check_smoothies_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку smoothies"):
-        smoothies_button = page.get_by_role("button", name='smoothies')
+        smoothies_button = menu.button('smoothies')
         smoothies_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Red Velvet", "Blueberry Restorer",
                     "Island Tropics", "Healthy Glow"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'smoothies' is not clickable"
 
 
@@ -199,22 +177,19 @@ def test_check_smoothies_button(setup_browser, request):
 def test_check_bakery_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку bakery"):
-        bakery_button = page.get_by_role("button", name='bakery')
+        bakery_button = menu.button('bakery')
         bakery_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Cinnamon Roll", "Iced Lemon Cake",
                     "Classic Coffee Cake", "Cream Cheese Danish",
                     "Blueberry Muffin", "Double Chocolate Chip Muffin",
                     "Chocolate Croissant", "Almond Croissant",
                     "Croissant", "Chocolate Cake Pop"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'bakery' is not clickable"
 
 
@@ -226,15 +201,12 @@ def test_check_bakery_button(setup_browser, request):
 def test_check_bagels_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку bagels"):
-        bagels_button = page.get_by_role("button", name='bagels')
+        bagels_button = menu.button('bagels')
         bagels_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Dozen Bagels", "Half Dozen Bagel Box",
                     "Poppy Seed Bagel", "Sesame Bagel",
                     "Potato Roll", "Honey Whole Wheat",
@@ -242,7 +214,7 @@ def test_check_bagels_button(setup_browser, request):
                     "Spinach Bagel", "Cinnamon Sugar Bagel",
                     "Plain Bagel", "Everything Bagel"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'bagels' is not clickable"
 
 
@@ -254,22 +226,19 @@ def test_check_bagels_button(setup_browser, request):
 def test_check_coffee_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку coffee"):
-        coffee_button = page.get_by_role("button", name='coffee')
+        coffee_button = menu.button('coffee')
         coffee_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Cold Brew Coffee", "Pumpkin Cream Cold Brew",
                     "Peppermint Mocha", "Salted Caramel Mocha",
                     "Frappè", "Cappuccino", "Flat White",
                     "Latte Macchiato", "Caffè Latte", "Mocha",
                     "Doppio", "Caffè Americano"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'coffee' is not clickable"
 
 
@@ -281,17 +250,14 @@ def test_check_coffee_button(setup_browser, request):
 def test_check_tea_button(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsMenuPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsMenuPage.OUR_MENU_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        menu = MenuPage(page)
+        menu.menu_link()
     with allure.step("Нажатие на кнопку tea"):
-        tea_button = page.get_by_role("button", name='tea')
+        tea_button = menu.button('tea')
         tea_button.click()
-        titles = page.query_selector_all(SelectorsMenuPage.DISHES)
+        titles = menu.dishes()
         products = ["Ras Chai", "Earl Grey (Organic)", "Rooibos Bergamot",
                     "Moroccan Mint"]
         for i in range(len(titles)):
-            assert titles[1].inner_text() == products[i], \
+            assert titles[i].inner_text() == products[i], \
                 "The button 'tea' is not clickable"

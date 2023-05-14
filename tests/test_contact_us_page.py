@@ -1,7 +1,7 @@
 import pytest
 import allure
 
-from project_selectors.locators import SelectorsContactPage
+from Contact_us import ContactUsPage
 
 browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 
@@ -14,16 +14,13 @@ browsers = ['setup_browser_chrome', 'setup_browser_firefox']
 def test_check_name_contact_us(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsContactPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsContactPage.CONTACTUS_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        contact_us = ContactUsPage(page)
+        contact_us.contact_us_link()
     with allure.step("Ввод имени"):
-        name_field = page.query_selector(SelectorsContactPage.NAME)
+        name_field = contact_us.get_name()
         name_field.fill("Lisa and Masha")
-        page.wait_for_timeout(2000)
-        assert page.input_value(SelectorsContactPage.NAME) == "Lisa and Masha", \
+        contact_us.wait()
+        assert contact_us.name_value() == "Lisa and Masha", \
             "Name cannot be entered"
 
 
@@ -35,16 +32,13 @@ def test_check_name_contact_us(setup_browser, request):
 def test_check_email_contact_us(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsContactPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsContactPage.CONTACTUS_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        contact_us = ContactUsPage(page)
+        contact_us.contact_us_link()
     with allure.step("Ввод почтового адреса"):
-        name_field = page.query_selector(SelectorsContactPage.EMAIL)
+        name_field = contact_us.get_email()
         name_field.fill("student@edu.hse.ru")
-        page.wait_for_timeout(2000)
-        assert page.input_value(SelectorsContactPage.EMAIL) == "student@edu.hse.ru", \
+        contact_us.wait()
+        assert contact_us.email_value() == "student@edu.hse.ru", \
             "Email cannot be entered"
 
 
@@ -56,15 +50,11 @@ def test_check_email_contact_us(setup_browser, request):
 def test_check_description_contact_us(setup_browser, request):
     with allure.step("Запуск браузера и открытие страницы"):
         page = request.getfixturevalue(setup_browser)
-        page.goto(SelectorsContactPage.PAGE_LINK)
-        page.wait_for_timeout(2000)
-        link = page.query_selector(SelectorsContactPage.CONTACTUS_PAGE_LINK)
-        link.click()
-        page.wait_for_timeout(2000)
+        contact_us = ContactUsPage(page)
+        contact_us.contact_us_link()
     with allure.step("Ввод сообщения"):
-        name_field = page.query_selector(SelectorsContactPage.DESCRIPTION)
+        name_field = contact_us.get_description()
         name_field.fill("We love coffee!")
-        page.wait_for_timeout(2000)
-        assert page.input_value(SelectorsContactPage.DESCRIPTION) == \
-               "We love coffee!", \
+        contact_us.wait()
+        assert contact_us.description_value() == "We love coffee!", \
             "Description cannot be entered"
