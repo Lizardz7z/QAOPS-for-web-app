@@ -14,7 +14,7 @@ class BasePage:
 
     def follow_link(self, link):
         self.page.goto(link)
-        self.page.wait_for_timeout(2000)
+        self.wait()
 
     def value(self, selector):
         return self.page.input_value(selector)

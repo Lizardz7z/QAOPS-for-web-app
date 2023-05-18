@@ -4,7 +4,7 @@ from project_selectors.locators import SelectorsContactPage as Contact
 
 class ContactUsPage(BasePage):
     def contact_us_link(self):
-        self.follow_link(Contact.CONTACTUS_PAGE_LINK)
+        self.click_button(Contact.CONTACTUS_PAGE_LINK)
 
     def get_name(self):
         return self.get(Contact.NAME)
