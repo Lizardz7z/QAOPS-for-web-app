@@ -5,7 +5,7 @@ from project_selectors.locators import SelectorsCartPage as Cart
 
 class Products(BasePage):
     def products_page(self):
-        self.follow_link(Page.PRODUCTS_PAGE_LINK)
+        self.click_button(Page.PRODUCTS_PAGE_LINK)
 
     def products(self):
         return self.get_all(Page.ITEMS_SELECTOR)

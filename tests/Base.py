@@ -12,10 +12,9 @@ class BasePage:
     def wait(self, timeout=2000):
         self.page.wait_for_timeout(timeout)
 
-    def follow_link(self, selector):
-        link = self.get(selector)
-        link.click()
-        self.page.wait_for_timeout(2000)
+    def follow_link(self, link):
+        self.page.goto(link)
+        self.wait()
 
     def value(self, selector):
         return self.page.input_value(selector)
