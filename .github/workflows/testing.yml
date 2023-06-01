@@ -75,5 +75,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: artifact
-          path: web_up/**
+          path: web_app/**
           retention-days: 90
